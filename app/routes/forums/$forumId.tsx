@@ -14,6 +14,7 @@ import {
   fetchStudents,
   fetchForum,
   fetchConcertAttendance,
+  recordAttendance,
   Student,
   Forum,
   ConcertAttendance,
@@ -51,12 +52,12 @@ export const loader: LoaderFunction = async ({ params }) => {
 export const action: ActionFunction = async ({ params, request }) => {
   const body = await request.formData();
 
-  const { forumId, studentId } = Object.fromEntries(body);
+  const forumId = body.get("forumId") as string;
+  const studentId = body.get("studentId") as string;
 
-  console.log(forumId, studentId);
-
-  await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+  await recordAttendance({
+    studentId,
+    forumId,
   });
 
   return null;
@@ -119,6 +120,13 @@ export default function ForumRoute() {
   }, [detecting, students]);
 
   const transition = useTransition();
+
+  useEffect(() => {
+    if (transition.state === "loading" && transition.submission) {
+      // Action completed and is now re-loading data
+      setDetectedStudent(null);
+    }
+  }, [transition]);
 
   return (
     <>

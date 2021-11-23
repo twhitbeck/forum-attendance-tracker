@@ -1,5 +1,5 @@
 {
-  "name": "concert-logger",
+  "name": "forum-attendance-tracker",
   "license": "ISC",
   "scripts": {
     "build": "remix build",

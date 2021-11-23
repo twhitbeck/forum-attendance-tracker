@@ -94,10 +94,13 @@ export async function fetchConcertAttendance(
   }));
 }
 
-async function recordAttendance(
-  studentId: string,
-  forumId: string
-): Promise<void> {
+export async function recordAttendance({
+  studentId,
+  forumId,
+}: {
+  studentId: string;
+  forumId: string;
+}): Promise<void> {
   await apiFetch("Concert Attendance", {
     method: "POST",
     headers: {
