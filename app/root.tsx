@@ -1,11 +1,5 @@
 import type { LinksFunction } from "remix";
-import {
-  Meta,
-  Links,
-  Scripts,
-  LiveReload,
-  useCatch
-} from "remix";
+import { Meta, Links, Scripts, LiveReload, useCatch } from "remix";
 import { Outlet } from "react-router-dom";
 
 import stylesUrl from "./styles/tailwind.css";
@@ -16,7 +10,7 @@ export let links: LinksFunction = () => {
 
 function Document({
   children,
-  title
+  title,
 }: {
   children: React.ReactNode;
   title?: string;
@@ -25,6 +19,7 @@ function Document({
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         {title ? <title>{title}</title> : null}
         <Meta />
@@ -42,7 +37,9 @@ function Document({
 export default function App() {
   return (
     <Document>
-      <Outlet />
+      <div className="m-4">
+        <Outlet />
+      </div>
     </Document>
   );
 }

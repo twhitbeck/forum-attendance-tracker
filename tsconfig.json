@@ -7,10 +7,11 @@
     "moduleResolution": "node",
     "target": "ES2019",
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "~/*": ["./app/*"]
     },
-
+    "types": [],
     // Remix takes care of building everything in `remix build`.
     "noEmit": true
   }

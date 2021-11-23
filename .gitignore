@@ -6,3 +6,9 @@ node_modules
 /build
 
 /app/styles
+
+.env
+
+/qr
+
+http-client.private.env.json
